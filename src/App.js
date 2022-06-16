@@ -32,9 +32,31 @@ class App extends Component {
                   this.state.name.firstName but there is no property called firstName
                   after updateing the state.*/}
           <button
-            onClick={() => {
-              this.setState({ name: { firstName: "siri", lastName: "pala" } });
-            }}
+            // Problem Definition
+            // onClick={() => {
+            //   this.setState({ name: { firstName: "siri", lastName: "pala" } });
+            //   // Logging state here will print previous state values.
+            //   // Reason: setState is async and react batches state updates.
+            //   // console.log(this.state);
+            // }}
+
+            // Solution
+            // Here we pass 2 parameters to OnClick. Both functions.
+            // First one to update the state and second callbacks after state is updated.
+            // Previously for the setState a object is passed. But, here a function is passed.
+            // Thus, setState has access to current state and the props of the component.
+            onClick={
+              (() => {
+                this.setState((state, props) => {
+                  return {
+                    name: { firstName: "siri", lastName: "pala" },
+                  };
+                });
+              },
+              () => {
+                console.log(this.state);
+              })
+            }
           >
             Change name
           </button>
