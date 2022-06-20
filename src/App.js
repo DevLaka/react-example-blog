@@ -5,24 +5,26 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      articles: [
-        {
-          id: 1,
-          title: "Introduction to GIT",
-          category: "GIT",
-        },
-        {
-          id: 2,
-          title: "Introduction to React",
-          category: "React",
-        },
-        {
-          id: 3,
-          title: "Introduction to Redux",
-          category: "React",
-        },
-      ],
+      articles: [],
     };
+  }
+
+  // Runs when component is mounting.
+  // Mounting is the first time a component is placed in the DOM.
+  // Happens once per component life cycle.
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((articles) =>
+        this.setState(
+          () => {
+            return {
+              articles,
+            };
+          },
+          () => console.log(this.state)
+        )
+      );
   }
 
   render() {
