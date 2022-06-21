@@ -33,12 +33,30 @@ class App extends Component {
       );
   }
 
+  // Optimization
+  // Moving onSearchChange out of render method.
+  // Reason: In render method we had a anonymous function which gets
+  // reintialized everytime the app renders. But the internals of the function
+  // is the same. Only thing changes is the event. Thus, we don't need to reintialize
+  // the function everytime the app renderes.
+  // Moving out the function to component intializes the function once and refers it
+  // in the onChange event of our input.
+  onSearchChange = (event) => {
+    console.log(event.target.value);
+    this.setState({ searchTerm: event.target.value.toLocaleLowerCase() });
+  };
+
   // Component Life Cycle Execution Order: 2
   // Running inital render with initialzed state.
   // Determines what to show.
   // Component Life Cycle Execution Order: 3
   // Re-renders beacuse state is updated in componentDidMount.
   render() {
+    // Optimization
+    // Destructuring
+    const { onSearchChange } = this;
+    const { articles, searchTerm } = this.state;
+
     // Another solution is moving filterd array here.
     // And, then map over it inside return.
     console.log("Render");
@@ -48,13 +66,12 @@ class App extends Component {
           className="search-box"
           type="search"
           placeholder="search articles"
-          onChange={(event) => {
-            console.log(event.target.value);
-            this.setState({ searchTerm: event.target.value.toLocaleLowerCase() });
-          }}
+          onChange={onSearchChange}
         />
-        {this.state.articles
-          .filter((article) => article.title.toLocaleLowerCase().includes(this.state.searchTerm))
+        {articles
+          .filter((article) =>
+            article.title.toLocaleLowerCase().includes(searchTerm)
+          )
           .map((article) => {
             return <h1 key={article.id}>{article.title}</h1>;
           })}
