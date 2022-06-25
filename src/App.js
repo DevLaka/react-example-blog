@@ -1,4 +1,6 @@
 import { Component } from "react";
+import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
 import "./App.css";
 
 class App extends Component {
@@ -60,21 +62,22 @@ class App extends Component {
     // Another solution is moving filterd array here.
     // And, then map over it inside return.
     console.log("Render");
+
+    // When breaking down to component make sure to ensure single resposiblity.
+    // Thus, the comopnent will be reusable.
+
+    const filterdArticles = articles.filter((article) =>
+      article.title.toLocaleLowerCase().includes(searchTerm)
+    );
+
     return (
       <div className="App">
-        <input
+        <SearchBox
           className="search-box"
-          type="search"
-          placeholder="search articles"
-          onChange={onSearchChange}
+          placeHolder="search articles"
+          onChangeHandler={onSearchChange}
         />
-        {articles
-          .filter((article) =>
-            article.title.toLocaleLowerCase().includes(searchTerm)
-          )
-          .map((article) => {
-            return <h1 key={article.id}>{article.title}</h1>;
-          })}
+        <CardList articles={filterdArticles} />
       </div>
     );
   }
