@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./search-box.styles.css";
 
 class SearchBox extends Component {
   // When thinking about single resposibilty, moduler and reusable components
@@ -11,7 +12,9 @@ class SearchBox extends Component {
     const { className, placeholder, onChangeHandler } = this.props;
     return (
       <input
-        className={className}
+        // use search-box to write styles common to all search-box components.
+        // use className to write specific styles.
+        className={`search-box ${className}`}
         type="search"
         placeholder={placeholder}
         onChange={onChangeHandler}

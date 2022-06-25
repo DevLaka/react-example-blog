@@ -3,6 +3,9 @@ import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
 import "./App.css";
 
+// App is the entry point of the applicaiton.
+// This is not reusable. Thus we keep this file in the root
+// rather than moving it to components directory.
 class App extends Component {
   // Component Life Cycle Execution Order: 1
   // Initialize the state here.
@@ -74,7 +77,7 @@ class App extends Component {
       <div className="App">
         <SearchBox
           className="search-box"
-          placeHolder="search articles"
+          placeholder="search articles"
           onChangeHandler={onSearchChange}
         />
         <CardList articles={filterdArticles} />

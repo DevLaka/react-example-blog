@@ -1,0 +1,19 @@
+/* Css relevent to searchBox */
+.search-box {
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 150px;
+  line-height: 30px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+/* No matter where you import css file, as long as it's a general CSS file, React will build it all into
+one big CSS file so that no matter what, that CSS is always present in your application.
+In short: React collect all css files and create a big css file and entire application have access to this big css file.
+Example: This card-list style still applies to card-list component eventhough this is not imported their.
+*/
+/* .card-list {
+  background-color: red;
+} */

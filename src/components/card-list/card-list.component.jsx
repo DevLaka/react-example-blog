@@ -8,7 +8,7 @@ class CardList extends Component {
     console.log(this.props.articles);
     const { articles } = this.props;
     return (
-      <div>
+      <div className="card-list">
         {articles.map((article) => {
           return <h1 key={article.id}>{article.title}</h1>;
         })}
