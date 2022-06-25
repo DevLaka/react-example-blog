@@ -17,3 +17,11 @@ body {
   );
   text-align: center;
 }
+
+.app-title {
+  margin-top: 38px;
+  margin-bottom: 38px;
+  font-size: 60px;
+  color: aqua;
+  font-family: "Rubik Moonrocks", cursive;
+}
