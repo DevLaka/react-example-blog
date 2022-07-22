@@ -7,7 +7,7 @@ class CardList extends Component {
     // In React, comopnents render or re-render in 2 occations.
     // 1. When state of the comopnent changes. ( when setSate gets called ).
     // 2. When the props of the component changes.
-    console.log(this.props.articles);
+    // console.log(this.props.articles);
     const { articles } = this.props;
     return (
       <div className="card-list">
