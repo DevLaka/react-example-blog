@@ -1,3 +1,4 @@
+import { IArticle } from "../../App";
 import "./card.styles.css";
 
 // class Card extends Component {
@@ -14,8 +15,14 @@ import "./card.styles.css";
 //   }
 // }
 
+interface ICardProps {
+  item: IArticle;
+  imgSrc: string;
+  alt: string;
+}
+
 // Nested Destructuring the item object.
-const Card = ({ item: { id, title, body }, imgSrc, alt }) => {
+const Card = ({ item: { id, title, body }, imgSrc, alt }: ICardProps) => {
   return (
     <div className="card-container" key={id}>
       <img src={imgSrc} alt={alt} />

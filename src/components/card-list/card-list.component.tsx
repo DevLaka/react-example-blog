@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Card from "../card/card.component";
+import { IArticle } from "../../App";
 import "./card-list-styles.css";
 
 // class CardList extends Component {
@@ -47,8 +48,12 @@ import "./card-list-styles.css";
 //   );
 // };
 
+interface ICardListProps {
+  articles: IArticle[];
+}
+
 // Small improvements to above functional component.
-const CardList = ({ articles }) => (
+const CardList = ({ articles }: ICardListProps) => (
   <div className="card-list">
     {articles.map((article) => {
       const { id, title, body } = article;
